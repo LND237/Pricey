@@ -1,7 +1,5 @@
-import os
 
-# Define the content for the README.md file
-md_content = """# Pricey 🏷️
+# Pricey 🏷️
 
 Pricey is the ultimate yet simple price tracker app you'll ever need. 
 
@@ -52,9 +50,3 @@ If you have any feature requests, suggestions, or feedback, feel free to reach o
 ## 📄 License
 
 This project is licensed under the **MIT License**. For more details, please see the `LICENSE` file at the root of this repository.
-"""
-
-
-    f.write(md_content)
-
-print(f"Successfully generated {file_path}")
