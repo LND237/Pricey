@@ -13,8 +13,8 @@ This is an open-source project created for habit building and out of goodwill.
 
 Pricey is designed using a modern, decoupled **Microservices Architecture** running locally on your machine. This ensures high performance, minimal resource usage, and isolated components that prevent a single breaking website change from crashing the entire app.
 
-* **Frontend UI Layer: TypeScript + Tauri** 💻
-    * Provides a beautiful, modern desktop dashboard without the massive memory consumption typical of Electron apps. It leverages your operating system's native web view engine to keep background RAM usage near zero.
+* **Frontend UI Layer: TypeScript + Expo (React Native)** 📱
+    * Provides a beautiful, modern cross-platform dashboard that runs on iOS, Android, and the web from a single codebase. Built on Expo Router for file-based navigation, with React Native delivering native UI performance and a fast iteration loop during development.
 * **Core Logic & Orchestration Layer: Go (Golang)** 🧠
     * Acts as the central "brain" running silently in the background. Go handles internal routing, scheduling periodic automated price checks via high-performance concurrent routines, and checking for price history fluctuations.
 * **Communication Layer: gRPC (HTTP/2 + Protocol Buffers)** 💬
@@ -32,7 +32,7 @@ Pricey is designed using a modern, decoupled **Microservices Architecture** runn
 * [ ] Defining core proto schemas for gRPC-driven service contracts.
 * [ ] Implementing structural data parsing hooks inside the Python scraper pipeline.
 * [ ] Deploying local SQLite telemetry recording configurations under the Go controller.
-* [ ] Constructing the cross-platform frontend dashboard via Tauri.
+* [ ] Constructing the cross-platform frontend dashboard via Expo (React Native).
 
 ---
 

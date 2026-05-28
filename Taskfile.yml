@@ -1,0 +1,68 @@
+version: '3'
+
+vars:
+  GO_MODULE: github.com/LND237/Pricey/src/core
+  GO_DIR: src/core
+  PY_DIR: src/scraper
+  PROTO_DIR: proto
+
+tasks:
+  default:
+    desc: List available tasks.
+    cmds:
+      - task --list
+
+  setup:
+    desc: Bootstrap the dev environment (Go tools, Go module, Python venv, proto code).
+    cmds:
+      - task: setup:go-tools
+      - task: setup:go-mod
+      - task: setup:py-venv
+      - task: proto
+
+  setup:go-tools:
+    desc: Install protoc plugins for Go and Go gRPC.
+    cmds:
+      - go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+      - go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+    status:
+      - command -v protoc-gen-go
+      - command -v protoc-gen-go-grpc
+
+  setup:go-mod:
+    desc: Initialize the Go module in {{.GO_DIR}} if missing, then download deps.
+    dir: '{{.GO_DIR}}'
+    cmds:
+      - test -f go.mod || go mod init {{.GO_MODULE}}
+      - go mod tidy
+
+  setup:py-venv:
+    desc: Create the scraper's Python venv and install gRPC tooling.
+    dir: '{{.PY_DIR}}'
+    cmds:
+      - python3 -m venv .venv
+      - ./.venv/bin/pip install --upgrade pip
+      - ./.venv/bin/pip install grpcio grpcio-tools
+      - '[ -f requirements.txt ] && ./.venv/bin/pip install -r requirements.txt || true'
+    status:
+      - test -x .venv/bin/python
+
+  proto:
+    desc: Generate Go and Python gRPC code from {{.PROTO_DIR}}/*.proto (no-op if none).
+    cmds:
+      - |
+        set -e
+        protos=$(ls {{.PROTO_DIR}}/*.proto 2>/dev/null || true)
+        if [ -z "$protos" ]; then
+          echo "No .proto files in {{.PROTO_DIR}}/, skipping."
+          exit 0
+        fi
+        protoc -I={{.PROTO_DIR}} \
+          --go_out={{.GO_DIR}} --go_opt=paths=source_relative \
+          --go-grpc_out={{.GO_DIR}} --go-grpc_opt=paths=source_relative \
+          $protos
+        if [ -x {{.PY_DIR}}/.venv/bin/python ]; then
+          {{.PY_DIR}}/.venv/bin/python -m grpc_tools.protoc -I={{.PROTO_DIR}} \
+            --python_out={{.PY_DIR}} --grpc_python_out={{.PY_DIR}} \
+            $protos
+        fi

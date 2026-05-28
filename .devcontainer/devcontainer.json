@@ -1,0 +1,36 @@
+{
+  "name": "Pricey Developer Environment",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-22.04",
+  
+  // These official ghcr.io links are verified and fully operational
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:1": {
+      "configureZshAsDefaultShell": true,
+      "username": "vscode"
+    },
+    "ghcr.io/devcontainers/features/go:1": {
+      "version": "1.22"
+    },
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.11"
+    },
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "20"
+    }
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "golang.go",
+        "ms-python.python",
+        "zxh404.vscode-proto3"
+      ]
+    }
+  },
+
+  // This command safely installs the gRPC compiler (protobuf-compiler) and Go-Task natively
+  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y protobuf-compiler && go install github.com/go-task/task/v3/cmd/task@latest && task setup",
+
+  "remoteUser": "vscode"
+}
