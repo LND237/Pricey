@@ -3,8 +3,16 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
     padding: 24,
+  },
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 56,
+  },
+  content: {
+    flex: 1,
+    justifyContent: 'center',
   },
   title: {
     justifyContent: 'center',
@@ -18,12 +26,22 @@ export default StyleSheet.create({
   },
   navBar: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
-    paddingVertical: 12,
-    backgroundColor: '#f0f0f0',
+    alignItems: 'center',
+    gap: 8,
   },
   navItem: {
     fontSize: 16,
     color: '#333',
+  },
+  navButton: {
+    paddingVertical: 8,
+    paddingHorizontal: 16,
+    borderRadius: 12,
+    backgroundColor: 'transparent',
+  },
+  navButtonHovered: {
+    backgroundColor: '#fff',
+    boxShadow: '0px 2px 6px rgba(0, 0, 0, 0.2)',
+    elevation: 4,
   },
 });
