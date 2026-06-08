@@ -31,8 +31,9 @@
     },
     "extra": {
       "router": {
-        "root": "./src/ui/app"
+        "root": "./src/app"
       }
     }
   }
 }
+  
