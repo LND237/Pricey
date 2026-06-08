@@ -4,11 +4,13 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     padding: 24,
+    paddingLeft: 25,
   },
   header: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 56,
+    paddingBottom: 20,
   },
   content: {
     flex: 1,
@@ -26,7 +28,8 @@ export default StyleSheet.create({
   },
   navBar: {
     flexDirection: 'row',
-    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1,
     gap: 8,
   },
   navItem: {
