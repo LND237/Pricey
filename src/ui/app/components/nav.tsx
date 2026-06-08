@@ -16,7 +16,11 @@ export default function NavBar({ onSelect }: NavBarProps) {
         <Pressable
           key={item}
           onPress={() => onSelect?.(item)}
-          style={({ hovered }) => [styles.navButton, hovered && styles.navButtonHovered]}
+          style={({ hovered, pressed }) => [
+            styles.navButton,
+            hovered && styles.navButtonHovered,
+            pressed && styles.navButtonPressed,
+          ]}
         >
           <Text style={styles.navItem}>{item}</Text>
         </Pressable>

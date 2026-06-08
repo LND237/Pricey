@@ -44,4 +44,8 @@ export default StyleSheet.create({
     boxShadow: '0px 2px 6px rgba(0, 0, 0, 0.2)',
     elevation: 4,
   },
+  navButtonPressed: {
+    backgroundColor: '#e8e8e8',
+    opacity: 0.85,
+  },
 });
