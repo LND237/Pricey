@@ -51,4 +51,15 @@ export default StyleSheet.create({
     backgroundColor: '#e8e8e8',
     opacity: 0.85,
   },
+  input: {
+    width: '50%',
+    padding: 12,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: '#000',
+    fontSize: 16,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 1,
+    shadowRadius: 4,
+  },
 });
