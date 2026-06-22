@@ -17,8 +17,8 @@ Pricey is designed using a modern, decoupled **Microservices Architecture** runn
     * Provides a beautiful, modern cross-platform dashboard that runs on iOS, Android, and the web from a single codebase. Built on Expo Router for file-based navigation, with React Native delivering native UI performance and a fast iteration loop during development.
 * **Core Logic & Orchestration Layer: Go (Golang)** 🧠
     * Acts as the central "brain" running silently in the background. Go handles internal routing, scheduling periodic automated price checks via high-performance concurrent routines, and checking for price history fluctuations.
-* **Communication Layer: gRPC (HTTP/2 + Protocol Buffers)** 💬
-    * Connects the Go backend and the Python scraping engine using strictly-typed contracts. This delivers lightning-fast communication over local loopback interfaces with optimized data transmission sizes.
+* **Communication Layer: REST API (HTTP + JSON)** 💬
+    * Connects the Go backend and the Python scraping engine over a simple, language-agnostic HTTP/JSON interface on the local loopback. Plain REST keeps the contract easy to read, debug, and curl by hand — no code generation or binary wire format required.
 * **Data Extraction Layer: Python Worker** 🏗️
     * A stateless microservice built using advanced web scraping libraries like `BeautifulSoup` and `Playwright`. Isolating this logic into Python ensures that when online stores update their HTML frontend, the scraper can be updated instantly without rewriting or recompiling the core application structure.
 * **Local Storage Engine: SQLite** 
@@ -29,7 +29,7 @@ Pricey is designed using a modern, decoupled **Microservices Architecture** runn
 ## 🗺️ Roadmap
 
 * [ ] Framework initialization and repository directory structural layout.
-* [ ] Defining core proto schemas for gRPC-driven service contracts.
+* [ ] Defining the core REST API contract between the Go backend and Python scraper.
 * [ ] Implementing structural data parsing hooks inside the Python scraper pipeline.
 * [ ] Deploying local SQLite telemetry recording configurations under the Go controller.
 * [ ] Constructing the cross-platform frontend dashboard via Expo (React Native).

@@ -23,14 +23,13 @@
     "vscode": {
       "extensions": [
         "golang.go",
-        "ms-python.python",
-        "zxh404.vscode-proto3"
+        "ms-python.python"
       ]
     }
   },
 
-  // This command safely installs the gRPC compiler (protobuf-compiler) and Go-Task natively
-  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y protobuf-compiler && go install github.com/go-task/task/v3/cmd/task@latest && task setup",
+  // Installs Go-Task natively, then bootstraps the dev environment
+  "postCreateCommand": "go install github.com/go-task/task/v3/cmd/task@latest && task setup",
 
   "remoteUser": "vscode"
 }
