@@ -27,3 +27,6 @@ yarn-error.*
 
 # Logs
 *.log
+
+
+src/scraper/.venv/
