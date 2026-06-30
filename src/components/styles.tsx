@@ -72,9 +72,10 @@ export default StyleSheet.create({
     flex: 1,
     paddingVertical: 10,
     paddingHorizontal: 14,
-    borderRadius: 999,
-    fontSize: 16,
-    color: '#111827',
+    borderRadius: 50000,
+    fontSize: 20,
+    color: '#000000',
+    outlineColor: '#fff',
   },
   searchButton: {
     paddingVertical: 10,
