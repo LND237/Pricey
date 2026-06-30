@@ -26,13 +26,14 @@ Pricey is designed using a modern, decoupled **Microservices Architecture** runn
 
 ---
 
-## 🗺️ Roadmap
-
-* [ ] Framework initialization and repository directory structural layout.
-* [ ] Defining the core REST API contract between the Go backend and Python scraper.
-* [ ] Implementing structural data parsing hooks inside the Python scraper pipeline.
-* [ ] Deploying local SQLite telemetry recording configurations under the Go controller.
-* [ ] Constructing the cross-platform frontend dashboard via Expo (React Native).
+## Installation 🤖
+currently the only installation availabe is dev-ready, not production-ready. Later on I will provide a production ready project (core is more important for now!). 
+### Option 1 - dev containers
+thiis by far the easiest method. just install dev containers on your ide as an extension,  then it will prompt you to reopen the project in a container and it will do the setup for you just fine. It may take some time for installing all dependecies. 
+for more info about about it: [dev containers](https://code.visualstudio.com/docs/devcontainers/containers)
+### option 2 - taskfile
+To get the core setup installation without containers and docker fluff you may just do in the project dir: ```task setup``` and it will install all the technologies and dependecies for you.
+**Note: the taskfile is desgined for unix-based os and may not work on windows machines. That's why I would suggest option 1. Do it if you know what you are doing.**
 
 ---
 
