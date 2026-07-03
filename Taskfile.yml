@@ -33,3 +33,24 @@ tasks:
       - '[ -f requirements.txt ] && ./.venv/bin/pip install -r requirements.txt || true'
     status:
       - test -x .venv/bin/python
+    
+  scraper:run:
+      desc: Run the Project
+      dir: '{{.PY_DIR}}'
+      cmds:
+        - ./.venv/bin/python main.py
+    
+  go:run:
+      desc: Run the Go application
+      dir: '{{.GO_DIR}}'
+      cmds:
+        - go run index.go
+  expo:run:
+      desc: Run the Expo application
+      dir: 'src/expo'
+      cmds:
+        - npm run web
+        
+  run:
+      desc: Run the entire project (Go, Python, and Expo).
+      deps: [go:run, scraper:run, expo:run]
