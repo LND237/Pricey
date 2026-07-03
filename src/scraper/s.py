@@ -1,6 +1,6 @@
 import re
 from playwright.sync_api import sync_playwright
-
+import sys
 USER_AGENT = (
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
     "(KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
@@ -36,7 +36,7 @@ def main():
             "Object.defineProperty(navigator, 'webdriver', {get: () => undefined})"
         )
         page = context.new_page()
-        response = page.goto("", wait_until="networkidle")
+        response = page.goto(sys.argv[1], wait_until="networkidle")
         page.wait_for_timeout(3000)
         price = extract_price(page)
         print(f"status: {response.status}")
