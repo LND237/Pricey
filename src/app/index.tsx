@@ -39,6 +39,10 @@ export default function Index() {
       setLoading(false);
     }
   }
+  function validateQuery(query: string) {
+    if (query.startsWith('http') || query.startsWith('https')) return true;
+    return false;
+  }
 
   return (
     <View style={styles.content}>
@@ -67,6 +71,10 @@ export default function Index() {
       {results != null && (
         <Text style={styles.subtitle}>{JSON.stringify(results)}</Text>
       )}
+      <Text style={styles.subtitle}>
+          {validateQuery(query) ? '' : 'Please enter a valid query that begins with "http" or "https".'}
+        </Text>
     </View>
+
   );
 }
