@@ -15,6 +15,7 @@ export default StyleSheet.create({
   content: {
     flex: 1,
     justifyContent: 'center',
+    alignItems: 'center',
   },
   title: {
     justifyContent: 'center',
